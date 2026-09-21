@@ -12,8 +12,8 @@ export function getCollection(payload) {
   return payload.items ?? payload.results ?? payload.data ?? []
 }
 
-export async function fetchCollection(resource) {
-  const response = await fetch(getApiUrl(resource))
+export async function fetchCollection(endpoint) {
+  const response = await fetch(endpoint)
   if (!response.ok) throw new Error(`Unable to load ${resource}`)
   return getCollection(await response.json())
 }
