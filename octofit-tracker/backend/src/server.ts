@@ -23,7 +23,7 @@ app.use((request, response, next) => {
 
   if (isAllowedOrigin) {
     response.header('Access-Control-Allow-Origin', origin)
-    response.header('Vary', 'Origin')
+    response.append('Vary', 'Origin')
 
     response.header('Access-Control-Allow-Headers', 'Authorization, Content-Type')
     response.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE,OPTIONS')
