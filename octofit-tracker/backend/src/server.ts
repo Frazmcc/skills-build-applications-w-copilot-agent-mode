@@ -19,18 +19,19 @@ const frontendOrigin = codespaceName
 app.use(express.json())
 app.use((request, response, next) => {
   const origin = request.get('origin')
+  const isAllowedOrigin = origin === frontendOrigin
 
-  if (origin === frontendOrigin) {
+  if (isAllowedOrigin) {
     response.header('Access-Control-Allow-Origin', origin)
     response.header('Vary', 'Origin')
-  }
 
-  response.header('Access-Control-Allow-Headers', 'Content-Type')
-  response.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE,OPTIONS')
+    response.header('Access-Control-Allow-Headers', 'Content-Type')
+    response.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE,OPTIONS')
 
-  if (request.method === 'OPTIONS') {
-    response.sendStatus(204)
-    return
+    if (request.method === 'OPTIONS') {
+      response.sendStatus(204)
+      return
+    }
   }
 
   next()
