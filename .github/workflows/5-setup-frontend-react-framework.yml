@@ -16,7 +16,7 @@ env:
 jobs:
   find_exercise:
     name: Find Exercise Issue
-    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.9.0
+    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@8d6b7541e38927ddc6c40a03e467cf7c55b2fade # v0.9.0
 
   check_step_work:
     name: Check step work
@@ -28,10 +28,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
       - name: Get response templates
-        uses: actions/checkout@v6
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
@@ -39,14 +39,14 @@ jobs:
 
       - name: Find last comment
         id: find-last-comment
-        uses: peter-evans/find-comment@v3
+        uses: peter-evans/find-comment@3eae4d37986fb5a8592848f6a574fdf654e61f9e # v3
         with:
           repository: ${{ env.ISSUE_REPOSITORY }}
           issue-number: ${{ env.ISSUE_NUMBER }}
           direction: last
 
       - name: Update comment - checking work
-        uses: GrantBirki/comment@v2.1.1
+        uses: GrantBirki/comment@608e41b19bc973020ec0e189ebfdae935d7fe0cc # v2.1.1
         with:
           repository: ${{ env.ISSUE_REPOSITORY }}
           issue-number: ${{ env.ISSUE_NUMBER }}
@@ -59,7 +59,7 @@ jobs:
       - name: Check for codespace API endpoint in Activities.jsx
         id: check-activities
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v2.0.0
+        uses: skills/action-keyphrase-checker@4771c016e1a66082db6bff148136b82689f7bd84 # v2.0.0
         with:
           text-file: octofit-tracker/frontend/src/components/Activities.jsx
           keyphrase: '-8000.app.github.dev/api/activities'
@@ -69,7 +69,7 @@ jobs:
       - name: Check for codespace API endpoint in Leaderboard.jsx
         id: check-leaderboard
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v2.0.0
+        uses: skills/action-keyphrase-checker@4771c016e1a66082db6bff148136b82689f7bd84 # v2.0.0
         with:
           text-file: octofit-tracker/frontend/src/components/Leaderboard.jsx
           keyphrase: '-8000.app.github.dev/api/leaderboard'
@@ -79,7 +79,7 @@ jobs:
       - name: Check for codespace API endpoint in Teams.jsx
         id: check-teams
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v2.0.0
+        uses: skills/action-keyphrase-checker@4771c016e1a66082db6bff148136b82689f7bd84 # v2.0.0
         with:
           text-file: octofit-tracker/frontend/src/components/Teams.jsx
           keyphrase: '-8000.app.github.dev/api/teams'
@@ -89,7 +89,7 @@ jobs:
       - name: Check for codespace API endpoint in Users.jsx
         id: check-users
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v2.0.0
+        uses: skills/action-keyphrase-checker@4771c016e1a66082db6bff148136b82689f7bd84 # v2.0.0
         with:
           text-file: octofit-tracker/frontend/src/components/Users.jsx
           keyphrase: '-8000.app.github.dev/api/users'
@@ -99,7 +99,7 @@ jobs:
       - name: Check for codespace API endpoint in Workouts.jsx
         id: check-workouts
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v2.0.0
+        uses: skills/action-keyphrase-checker@4771c016e1a66082db6bff148136b82689f7bd84 # v2.0.0
         with:
           text-file: octofit-tracker/frontend/src/components/Workouts.jsx
           keyphrase: '-8000.app.github.dev/api/workouts'
@@ -107,7 +107,7 @@ jobs:
           case-sensitive: false
 
       - name: Update comment - step results
-        uses: GrantBirki/comment@v2.1.1
+        uses: GrantBirki/comment@608e41b19bc973020ec0e189ebfdae935d7fe0cc # v2.1.1
         with:
           repository: ${{ env.ISSUE_REPOSITORY }}
           issue-number: ${{ env.ISSUE_NUMBER }}
@@ -144,17 +144,17 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
       - name: Get response templates
-        uses: actions/checkout@v6
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
           ref: v0.9.0
 
       - name: Create comment - step finished
-        uses: GrantBirki/comment@v2.1.1
+        uses: GrantBirki/comment@608e41b19bc973020ec0e189ebfdae935d7fe0cc # v2.1.1
         with:
           repository: ${{ env.ISSUE_REPOSITORY }}
           issue-number: ${{ env.ISSUE_NUMBER }}
@@ -163,14 +163,14 @@ jobs:
             next_step_number: 6
 
       - name: Create comment - add step content
-        uses: GrantBirki/comment@v2.1.1
+        uses: GrantBirki/comment@608e41b19bc973020ec0e189ebfdae935d7fe0cc # v2.1.1
         with:
           repository: ${{ env.ISSUE_REPOSITORY }}
           issue-number: ${{ env.ISSUE_NUMBER }}
           file: ${{ env.STEP_6_FILE }}
 
       - name: Create comment - watching for progress
-        uses: GrantBirki/comment@v2.1.1
+        uses: GrantBirki/comment@608e41b19bc973020ec0e189ebfdae935d7fe0cc # v2.1.1
         with:
           repository: ${{ env.ISSUE_REPOSITORY }}
           issue-number: ${{ env.ISSUE_NUMBER }}
